@@ -50,24 +50,41 @@ jobs:
       - name: Convert PDF to PNG
         if: ${{ !env.ACT }}
         run: |
+          echo "Starting PDF to PNG conversion..."
           if [ -f Maharshi_Basu_Resume.png ]; then  # Fixed syntax
             rm Maharshi_Basu_Resume.png
+            echo "Removed existing PNG files"
           fi
           pdftoppm -png -r 300 -cropbox Maharshi_Basu_Resume.pdf Maharshi_Basu_Resume
+          echo "Generated files: "
+          ls -la Maharshi_Basu_Resume-*.png
+
           sudo apt install -y imagemagick
+          echo "Checking for multiple pages..."
           if [ -f Maharshi_Basu_Resume-2.png ]; then
+            echo "Found 2 pages, concatenating..."
+            echo "Page 1 size:" && identify Maharshi_Basu_Resume-1.png
+            echo "Page 2 size:" && identify Maharshi_Basu_Resume-2.png
             convert Maharshi_Basu_Resume-1.png Maharshi_Basu_Resume-2.png -append Maharshi_Basu_Resume.png
+            echo "Final concatenated image:" && identify Maharshi_Basu_Resume.png
+            echo "Cleaned up individual page files"
             rm Maharshi_Basu_Resume-1.png Maharshi_Basu_Resume-2.png
           else
+            echo "Only 1 page found, renaming..."
             mv Maharshi_Basu_Resume-1.png Maharshi_Basu_Resume.png
           fi
+          echo "Final PNG file info:"
+          ls -la Maharshi_Basu_Resume.png
 
       - name: Add resume to readme
         if: ${{ !env.ACT }}
         run: |
+          TIMESTAMP=$(data +s%)
           cat > README.md << 'EOF'
-          ![Resume](Maharshi_Basu_Resume.png)
+          ![Resume](Maharshi_Basu_Resume.png?v=TIMESTAMP_PLACEHOLDER)
           EOF
+          sed -i "s/TIMESTAMP_PLACEHOLDER/$TIMESTAMP/" README.md
+          echo "Created README.md"
           
       - name: Check for changes
         id: check_changes
