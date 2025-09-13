@@ -1,0 +1,214 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+\documentclass[letterpaper,11pt]{article}
+\usepackage{latexsym}
+% Replace fullpage with geometry for better compatibility
+\usepackage[
+    letterpaper,
+    margin=0.5in,
+    top=0.3in,
+    bottom=0.5in
+]{geometry}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+% Adjust margins (these will work with geometry)
+% Note: geometry already handles most of this, but keeping for fine-tuning
+\addtolength{\oddsidemargin}{-0.1in}
+\addtolength{\evensidemargin}{0in}
+\addtolength{\textwidth}{0.2in}
+\addtolength{\topmargin}{-0.4in}
+\addtolength{\textheight}{0.9in}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+\begin{center}
+    {\Huge \scshape Maharshi Basu} \\ \vspace{4pt}
+     \href{mailto:basumaharshi10@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{basumaharshi10@gmail.com}} ~ 
+    \href{https://www.linkedin.com/in/basum10/}{\raisebox{-0.2\height}\faLinkedin\ \underline{LinkedIn}}  ~
+    \href{https://github.com/MashyBasker}{\raisebox{-0.2\height}\faGithub\ \underline{GitHub}} ~
+    \href{https://mashybasker.github.io}{\raisebox{-0.2\height}
+    \faGlobe\ \underline{Website}}
+    
+    \vspace{-8pt}
+\end{center}
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Indian Institute of Information Technology}{2021 -- 2025}
+      {Bachelor of Technolgy in Computer Science and Engineering}{Kalyani, West Bengal}
+ \resumeSubHeadingListEnd
+%-----------EXPERIENCE-----------
+\section{WORK EXPERIENCE}
+  \resumeSubHeadingListStart
+    \resumeSubheading{Keploy}{August 2025 -- present}{SDE Intern}{Bangalore, India}
+    \resumeItemListStart
+        \resumeItem{Worked on schema coverage service to detect lines covered}
+        \resumeItem{Improve MongoDB query performance by ~80\% in the dashboard}
+        \resumeItem{Fixed support related bugs in production}
+    \resumeItemListEnd
+    \resumeSubheading{DeepSource}{February 2025 -- July 2025}{SWE Intern}{Bangalore, India}
+    \resumeItemListStart
+        \resumeItem{Worked on \href{https://globstar.dev}{\underline{Globstar}} -- an open source analysis toolkit by DeepSource.}
+        \resumeItem{Implemented \textbf{50+} vulnerability checkers for multiple rulesets.}
+        \resumeItem{Built features to skip specific lines and analyzers by adding directives.}
+        \resumeItem{Added scope analysis for Python to reduce false positives during taint checking \& data flow analysis.}
+    \resumeItemListEnd
+    \resumeSubheading{RISC-V}{June 2024 -- September 2024}{Intern}{Remote}
+    \resumeItemListStart
+        \resumeItem{Joined as an \textbf{LFX'24 Mentee} at \textbf{RISC-V} working on the Sailing Downstream II project.}
+        \resumeItem{Worked on the \textbf{Sail language parser} backend to extract salient features from the Abstract Syntax Tree into a JSON output.}
+        \resumeItem{Helped improve the CI/CD pipeline to sanitize code in pull requests and comply with the latest NodeJS version used in Github Actions}
+        \resumeItem{Worked on improving the extraction of instruction formats in a consistent and formal manner.}
+    \resumeItemListEnd
+    \resumeSubheading
+      {INRIA}{December 2023 -- May 2024}
+      {Intern}{Remote}
+      \resumeItemListStart
+        \resumeItem{Worked on the \textbf{Semantic Parser Language} in Coccinelle to extend it for C++ constructs.}
+        \resumeItem{Added support for \textbf{Qualified Access}, \textbf{Tuple Expressions}, \textbf{Trailing Qualifiers} and more.}
+        \resumeItem{Contributed \textbf{40k+} lines of code over several merged requests.}
+      \resumeItemListEnd    
+  \resumeSubHeadingListEnd
+\vspace{-8pt}
+%-----------PROJECTS-----------
+\section{Projects}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Zinc} $|$ \emph{C++, Make} $|$ \href{https://github.com/MashyBasker/zinc}{\underline{Repository}}}{}
+          \resumeItemListStart
+            \resumeItem{Built a custom compiler that translates a simplified programming language into assembly code for an 8-bit CPU.}
+            \resumeItem{Designed and implemented a recursive descent parser to generate Abstract Syntax Trees and handle language constructs.}
+            \resumeItem{Developed the code generation for the 8-bit CPU to emit assembly code.}
+          \resumeItemListEnd
+          \vspace{-13pt}
+      \resumeProjectHeading
+          {\textbf{Trinity} $|$ \emph{Jupyter Notebook, Python} $|$ \href{https://github.com/MashyBasker/Trinity}{\underline{Repository}}}{}
+          \resumeItemListStart
+            \resumeItem{Developed a project for SIH1447 at Smart India Hackathon 2023 with team Daemons (Team ID 4454). It identifies and extracts Forward Error Correction schemes from unknown demodulated signals using an improved RNN model.}
+            \resumeItem{Created datasets for training the RNN model by encoding data with various FEC schemes and simulating noisy wireless channels with modulation, AWGN addition, and demodulation for over 1 million data points. \href{https://github.com/FEC-SIH-23/data}{\underline{Repository}}}
+          \resumeItemListEnd 
+          \vspace{-13pt}
+          \resumeProjectHeading
+          {\textbf{Classic McEliece Cryptosystem Implementation} $|$ \emph{Python}}{}
+          \resumeItemListStart
+            \resumeItem{College semester project for understanding the inner workings of the post-quantum encryption scheme Classic McEliece under DRDO.}
+            \resumeItem{Created a simplified implementation in Python for demonstration purposes and to understand the different components: Key Generation, Encapsulation and Decapsulation.}
+          \resumeItemListEnd 
+    \resumeSubHeadingListEnd
+\vspace{-15pt}
+\section{Accomplishments}
+\resumeItemListStart
+    \resumeItem{Grand Finalist at \textbf{Smart India Hackathon 2023}. Our team 
+    worked on problem statement SIH1447 by the National Technical Research Organization for identifying and extracting FEC schemes from unknown demodulated signals.}
+    \resumeItem{Semi-Finalist at \textbf{e-Yantra Robotics Competition 2022-23} organized by IIT Bombay. Our team worked on a Holonomic bot which could move at any angle and speed to draw graphs and shapes on the ground with the help of an ink brush attached to a stepper motor on the robot.}
+\resumeItemListEnd
+%
+%-----------PROGRAMMING SKILLS-----------
+\vspace{5pt}
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: C, C++, Go, Python, Rust, OCaml, HTML/CSS, JavaScript, Tyepscrupt} \\
+     \textbf{Technologies}{: Git, Linux, Docker, Vagrant, GraphQL, MongoDB} \\
+     \textbf{Libraries/Frameworks}{: OpenCV, Tensorflow, PyTorch, Next.js, ReactJS}
+    }}
+ \end{itemize}
+ \vspace{-16pt}
+%-----------INVOLVEMENT---------------
+\section{Extracurricular}
+    \resumeSubHeadingListStart
+        \resumeSubheading{FreeScape Open Source Club}{July 2023 -- October 2023}{Sophomore Executive Member}{Indian Institute of Information Technology, Kalyani}
+            \resumeItemListStart
+                \resumeItem{Helped in interviewing and recruiting junior members for the club.}
+                \resumeItem{Took a session to introduce Python and its application in Computer Vision/Image Processing to fresher students. \href{https://github.com/MashyBasker/invcloak}{\underline{Repository}}}
+                \resumeItem{Gave a talk to introduce open source software and how to contribute to open source projects. Introduced the audience to different fellowships and events they can take part in.}
+            \resumeItemListEnd
+    \resumeSubHeadingListEnd
+\section{References}
+\textbf{Dr. Bhaskar Biswas} Assistant Professor, Indian Institute of Information Technology(IIIT) Kalyani
+\end{document}

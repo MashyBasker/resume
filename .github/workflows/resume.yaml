@@ -1,0 +1,76 @@
+---
+name: CI
+on: 
+  push: 
+    branches: 
+      - "main"
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4  # Updated to v4
+        
+      - name: Install Nix
+        if: ${{ !env.ACT }}
+        uses: cachix/install-nix-action@v27
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Build Resume with Nix
+        if: ${{ !env.ACT }}
+        run: |
+          nix build --print-build-logs
+          cp result/resume.pdf Maharshi_Basu_Resume.pdf
+          
+      - name: Release PDF
+        uses: softprops/action-gh-release@v2  # Updated to v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: Maharshi_Basu_Resume.pdf
+          name: Maharshi_Basu_Resume.pdf
+    
+      - name: Make a pre-release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: Maharshi_Basu_Resume.pdf
+          
+      - name: Install Poppler
+        if: ${{ !env.ACT }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          
+      - name: Convert PDF to PNG
+        if: ${{ !env.ACT }}
+        run: |
+          if [ -f Maharshi_Basu_Resume.png ]; then  # Fixed syntax
+            rm Maharshi_Basu_Resume.png
+          fi
+          pdftoppm -png Maharshi_Basu_Resume.pdf Maharshi_Basu_Resume
+          mv Maharshi_Basu_Resume-1.png Maharshi_Basu_Resume.png
+          
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [[ -n $(git status -s) ]]; then
+            echo "Changes detected. Committing and pushing..."
+            echo "change=true" >> $GITHUB_OUTPUT
+          else
+            echo "No changes detected. Skipping commit and push."
+            echo "change=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.change == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Maharshi_Basu_Resume.png
+          git commit -m "Add PNG image"
+          git push
