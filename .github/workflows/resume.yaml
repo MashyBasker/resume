@@ -66,6 +66,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
+          git add Maharshi_Basu_Resume.png Maharshi_Basu_Resume.pdf README.md
           if [[ -n $(git status -s) ]]; then
             echo "Changes detected. Committing and pushing..."
             echo "change=true" >> $GITHUB_OUTPUT
@@ -79,6 +80,5 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add Maharshi_Basu_Resume.png Maharshi_Basu_Resume.pdf
-          git commit -m "Add PNG and PDF"
+          git commit -m "Add PNG and PDF + Update README"
           git push
