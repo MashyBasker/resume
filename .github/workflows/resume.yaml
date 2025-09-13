@@ -55,6 +55,13 @@ jobs:
           fi
           pdftoppm -png Maharshi_Basu_Resume.pdf Maharshi_Basu_Resume
           mv Maharshi_Basu_Resume-1.png Maharshi_Basu_Resume.png
+
+      - name: Add resume to readme
+        if: ${{ !env.ACT }}
+        run: |
+          cat > README.md << 'EOF'
+          ![Resume](Maharshi_Basu_Resume.png)
+          EOF
           
       - name: Check for changes
         id: check_changes
@@ -72,6 +79,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add Maharshi_Basu_Resume.png
-          git commit -m "Add PNG image"
+          git add Maharshi_Basu_Resume.png Maharshi_Basu_Resume.pdf
+          git commit -m "Add PNG and PDF"
           git push
