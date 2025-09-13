@@ -53,8 +53,14 @@ jobs:
           if [ -f Maharshi_Basu_Resume.png ]; then  # Fixed syntax
             rm Maharshi_Basu_Resume.png
           fi
-          pdftoppm -png Maharshi_Basu_Resume.pdf Maharshi_Basu_Resume
-          mv Maharshi_Basu_Resume-1.png Maharshi_Basu_Resume.png
+          pdftoppm -png -r 300 -cropbox Maharshi_Basu_Resume.pdf Maharshi_Basu_Resume
+          sudo apt install -y imagemagick
+          if [ -f Maharshi_Basu_Resume-2.png ]; then
+            convert Maharshi_Basu_Resume-1.png Maharshi_Basu_Resume-2.png -append Maharshi_Basu_Resume.png
+            rm Maharshi_Basu_Resume-1.png Maharshi_Basu_Resume-2.png
+          else
+            mv Maharshi_Basu_Resume-1.png Maharshi_Basu_Resume.png
+          fi
 
       - name: Add resume to readme
         if: ${{ !env.ACT }}
